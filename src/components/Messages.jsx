@@ -37,7 +37,6 @@ const Messages = () => {
           </h3>
           <div className="lock">
             <img src={DefaultAvatar} style={{height:100}} alt="" />
-            <span>End-to-end encrypted</span>
           </div>
         </div>
       )}
