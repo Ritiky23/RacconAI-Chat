@@ -244,7 +244,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: #33333300;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,7 +263,7 @@ body {
 
     .logo {
       color: #eeeeee;
-      font-size: 30px; /* Increased font size */
+      font-size: 28px; /* Increased font size */
       font-weight: bold;
 
       font-family: $logo-font;
@@ -282,12 +281,12 @@ body {
     form {
       display: flex;
       flex-direction: column;
-      gap: 20px; /* Increased gap */
+      gap: 15px; /* Increased gap */
 
       input {
-        padding: 20px; /* Increased padding */
-        width: 300px; /* Increased width */
-        height: 5px; /* Increased height */
+        padding: 15px; /* Increased padding */
+        width: 180px; /* Increased width */
+        height: 3px; /* Increased height */
         border: none;
         font-size: larger;
         border-bottom: 1px solid #a7bcff;
@@ -388,7 +387,7 @@ body {
         justify-content: space-between;
         background-color: $sidebar-color;
         box-shadow: 0 6px 4px -3px rgba(0, 0, 0, 0.2); /* Increased shadow */
-        height: 70px; /* Increased height */
+        height: 40px; /* Increased height */
         padding: 5px;
         color: $text-color;
         position: relative; /* Ensure relative positioning for pseudo-elements */
@@ -502,6 +501,7 @@ body {
       .userChat {
         display: flex;
         align-items: center;
+        height: 30px;
         padding: 15px; /* Increased padding */
         transition: transform 0.3s ease-in-out;
         margin-bottom: 15px; /* Increased space between cards */
@@ -516,8 +516,8 @@ body {
         }
 
         img {
-          width: 60px; /* Increased size */
-          height: 60px; /* Increased size */
+          width: 40px; /* Increased size */
+          height: 40px; /* Increased size */
           border-radius: 50%;
           object-fit: cover;
 
@@ -560,7 +560,7 @@ body {
       flex-direction: column;
 
       .chatInfo {
-        height: 63px; /* Increased height */
+        height: 33px; /* Increased height */
         background-color: $background-color;
         display: flex;
         flex-direction: row;
@@ -696,7 +696,7 @@ body {
       }
 
       .input {
-        height: 50px; /* Increased height */
+        height: 15px; /* Increased height */
         background-color: #ffffff;
         display: flex;
         align-items: center;

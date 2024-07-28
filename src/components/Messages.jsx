@@ -35,7 +35,7 @@ const Messages = () => {
             <i>“Hi, welcome to Raccon CHAT!</i>
           </h3>
           <div className="lock">
-            <img src={DefaultAvatar} style={{height:100}} alt="" />
+            <img src={DefaultAvatar}  alt="" />
           </div>
         </div>
       )}
