@@ -223,7 +223,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 6px; /* Increased border-radius */
     margin-right: 15px; /* Increased margin */
-    font-size: 18px; /* Increased font size */
+    font-size: 14px; /* Increased font size */
   }
 }
 
@@ -287,7 +287,7 @@ body {
       input {
         padding: 20px; /* Increased padding */
         width: 300px; /* Increased width */
-        height: 20px; /* Increased height */
+        height: 5px; /* Increased height */
         border: none;
         font-size: larger;
         border-bottom: 1px solid #a7bcff;
@@ -360,8 +360,8 @@ body {
     display: flex;
     width: 85vw; /* Increased width */
     height: 85vh; /* Increased height */
-    max-width: 1400px; /* Increased max-width */
-    max-height: 900px; /* Increased max-height */
+    max-width: 1100px; /* Increased max-width */
+    max-height: 1000px; /* Increased max-height */
     background-color: $chat-bg; /* Ensure background color for visibility */
     border-radius: 12px; /* Increased border-radius */
     overflow: hidden;
@@ -465,6 +465,7 @@ body {
         border-bottom: 1px solid #ffffff; /* Add this to use flexbox layout */
         align-items: center; /* Vertically center the items */
         background-color: #344459;
+        
       
         .searchForm {
           display: flex; /* Use flexbox layout for the form */
@@ -477,10 +478,10 @@ body {
             background-color: transparent;
             border: none;
             color: $text-color;
-            font-size: large;
+     
             outline: none;
             width: 100%;
-            padding: 15px; /* Increased padding */
+       /* Increased padding */
       
             &::placeholder {
               color: #a6b8ba;
@@ -664,8 +665,8 @@ body {
         .welcome-message {
           margin-top: 4px; /* Increased top margin */
           text-align: center;
-          height: 500px;;
-          background-color: #122735;
+          height: 250px;
+          background-color: #122735e7;
           border-radius: 5%;
 
           img {
