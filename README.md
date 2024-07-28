@@ -1,8 +1,11 @@
 # Raccon Chat : Chat with Ease and Simplicity
 <p align="center">
-  <img src="/screenshot/logo.png" alt="Screenshot" width="600" height="280"/>
+  <img src="/ss/s7.png" alt="Screenshot" width="650" height="280"/>
 </p>
 Raccon Chat is an intuitive and user-friendly web application designed for seamless communication. Built using React and Firebase, Raccon Chat offers real-time messaging capabilities with a simple and elegant interface. The app is deployed on Vercel, ensuring fast and reliable access for users. Whether you're looking to chat with friends or connect with new people, Raccon Chat provides a smooth and enjoyable experience.
+
+## Deployed Link:
+ https://raccon-ai-chatting1.vercel.app/
 
 ## Key Features
 
@@ -42,7 +45,7 @@ Raccon Chat is an intuitive and user-friendly web application designed for seaml
 ## Getting Started
 
 ### Prerequisites
-
+- React
 - Node.js
 - Firebase Account
 - Vercel Account
