@@ -32,7 +32,7 @@ const Messages = () => {
       ) : (
         <div className="messages welcome-message">
           <h3>
-            <i>“Hi, welcome to Raccon CHAT!</i>
+            <i>Hi, welcome to Raccon CHAT!</i>
           </h3>
           <div className="lock">
             <img src={DefaultAvatar}  alt="" />
