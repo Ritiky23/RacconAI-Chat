@@ -697,21 +697,20 @@ body {
 
       .input {
  
-        height: 15px; /* Increased height */
+        height: 4px; /* Increased height */
         background-color: #ffffff;
         display: flex;
         align-items: center;
         border-radius: 8px; /* Increased border-radius */
         justify-content: space-between;
-        padding: 25px; /* Increased padding */
+        padding: 40px; /* Increased padding */
 
         input {
           width: 85%; /* Increased width */
           border: none;
-          height: 15px;
-          
+          height: 10px;
           outline: none;
-          font-size: 20px; /* Increased font size */
+          font-size: 14px; /* Increased font size */
           font-family: $logo-font;
 
           &::placeholder {
