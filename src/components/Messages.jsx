@@ -31,7 +31,6 @@ const Messages = () => {
         messages.map((m) => <Message message={m} key={m.id} />)
       ) : (
         <div className="messages welcome-message">
-          <img src={Logo} alt="App Logo" />
           <h3>
             <i>“Hi, welcome to Raccon CHAT!</i>
           </h3>
