@@ -422,11 +422,11 @@ body {
           }
       
           &::before {
-            left: -55px; /* Position line to the left of the profile image */
+            left: -40px; /* Position line to the left of the profile image */
           }
       
           &::after {
-            right: 70px; /* Position line to the right of the display name */
+            right: 100px; /* Position line to the right of the display name */
           }
       
           img {
@@ -439,8 +439,8 @@ body {
           }
       
           span {
-            margin-right: 10%;
-            font-size: 25px;
+            margin-right: 5%;
+            font-size: 20px;
           }
       
           button {
