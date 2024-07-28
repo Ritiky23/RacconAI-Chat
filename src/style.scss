@@ -348,7 +348,18 @@ body {
     }
   }
 }
-
+.emojiPicker {
+  position: absolute;
+  padding-bottom: 20%;
+  top: -500px; /* Adjust this value based on emoji picker height */
+  right: 340px;
+  z-index: 1000;
+  
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
 .home {
   display: flex;
   align-items: center;
@@ -727,7 +738,7 @@ body {
           height: 50px; /* Increased height */
           border: none;
           border-radius: 8px; /* Increased border-radius */
-          background-color: $background-color;
+          background-color: $secondary-color;
           color: $chat-bg;
           font-weight: bold;
           cursor: pointer;

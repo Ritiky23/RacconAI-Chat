@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFile, faVideo, faLink, faImage, faPaperclip, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { faFile, faVideo, faLink, faImage, faPaperclip, faArrowAltCircleRight, faSmile } from '@fortawesome/free-solid-svg-icons';
 import {
   Timestamp,
   arrayUnion,
@@ -15,7 +15,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { CircularProgress } from '@mui/material';
 import { AuthContext } from "../context API/AuthContext";
 import { ChatContext } from "../context API/ChatContext";
-import { grey } from "@mui/material/colors";
+import EmojiPicker from 'emoji-picker-react'; // Import the emoji picker
 
 const Input = () => {
   const [text, setText] = useState("");
@@ -26,6 +26,8 @@ const Input = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [fileSelectedMessage, setFileSelectedMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false); // State to show/hide emoji picker
+  const inputRef = useRef(null);
 
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
@@ -66,50 +68,50 @@ const Input = () => {
     if (text.trim() === "" && !file) {
       return; // Do nothing if there is no text or file
     }
-  
+
     if (file && !["image", "video", "document"].includes(fileType)) {
       alert("Invalid file type selected.");
       return;
     }
-  
+
     let fileUrl = null;
     if (file) {
       fileUrl = await handleFileUpload();
     }
-  
+
     const message = {
       id: uuid(),
       senderId: currentUser.uid,
       date: Timestamp.now(),
       ...(text && fileType === "link" ? { link: text } : { text }),
     };
-  
+
     if (fileUrl) {
       message[fileType] = fileUrl;
     }
-  
+
     await updateDoc(doc(db, "chats", data.chatId), {
       messages: arrayUnion(message),
       typing: "",
     });
-  
+
     await updateDoc(doc(db, "userChats", currentUser.uid), {
       [`${data.chatId}.lastMessage`]: { text },
       [`${data.chatId}.date`]: serverTimestamp(),
     });
-  
+
     await updateDoc(doc(db, "userChats", data.user.uid), {
       [`${data.chatId}.lastMessage`]: { text },
       [`${data.chatId}.date`]: serverTimestamp(),
     });
-  
+
     setText("");
     setFile(null);
     setFileType("");
     setFileSelectedMessage("");
     setShowMenu(false);
   };
-  
+
   const handleFileChange = (e, type) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
@@ -205,11 +207,25 @@ const Input = () => {
         </div>
       )}
       <div className="input">
+        <div className="emojiPickerContainer">
+          <FontAwesomeIcon
+            icon={faSmile}
+            color="#2c3e50"
+            style={{ fontSize: '24px' }}
+            onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+          />
+        </div>
+        {showEmojiPicker && (
+          <div className="emojiPicker">
+            <EmojiPicker allowExpandReactions={false} lazyLoadEmojis={false} searchDisabled={true} style={{padding:5}} onEmojiClick={(emojiObject) => setText((prevText) => prevText + emojiObject.emoji)} />
+          </div>
+        )}
         <input
           type="text"
           placeholder="Type here..."
           onChange={handleTyping}
           value={text}
+          ref={inputRef}
         />
         <div className="inputOptions">
           <div className="fileInputContainer" onClick={() => setShowMenu(!showMenu)}>
@@ -218,15 +234,14 @@ const Input = () => {
           {fileSelectedMessage && <p style={{ color: 'black' }}>{fileSelectedMessage}</p>}
 
           <div onClick={handleSend} disabled={isLoading}>
-          <FontAwesomeIcon icon={faArrowAltCircleRight} color="#2c3e50" style={{ fontSize: '35px' }} />
-          
-        </div>
+            <FontAwesomeIcon icon={faArrowAltCircleRight} color="#2c3e50" style={{ fontSize: '35px' }} />
+          </div>
         </div>
       </div>
     </div>
   ) : (
     <div className="input">
-      <p style={{color:"#616161"}}>Please select your friend to start the chat.</p>
+      <p style={{ color: "#616161" }}>Please select your friend to start the chat.</p>
     </div>
   );
 };
