@@ -69,7 +69,8 @@ body {
 }
 
 .inputContainer {
-  position: relative; /* Allows absolute positioning of child elements */
+  position: relative;
+   /* Allows absolute positioning of child elements */
 }
 
 .progressOverlay {
@@ -560,7 +561,7 @@ body {
       flex-direction: column;
 
       .chatInfo {
-        height: 33px; /* Increased height */
+        height: 37px; /* Increased height */
         background-color: $background-color;
         display: flex;
         flex-direction: row;
@@ -586,8 +587,8 @@ body {
       .messages {
         padding: 10px; /* Increased padding */
         background-color: $chat-bg;
-        height: calc(100% - 150px); /* Increased height calculation */
-        overflow-y: auto;
+        height: calc(100%); /* Increased height calculation */
+        overflow-y:scroll;
         scrollbar-width: none;
 
         .message {
@@ -697,13 +698,14 @@ body {
 
       .input {
  
-        height: 4px; /* Increased height */
+        height: 40px; /* Increased height */
         background-color: #ffffff;
         display: flex;
         align-items: center;
         border-radius: 8px; /* Increased border-radius */
         justify-content: space-between;
-        padding: 40px; /* Increased padding */
+        
+ /* Increased padding */
 
         input {
           width: 85%; /* Increased width */
@@ -712,6 +714,7 @@ body {
           outline: none;
           font-size: 14px; /* Increased font size */
           font-family: $logo-font;
+  
 
           &::placeholder {
             color: #a6a6a6;
