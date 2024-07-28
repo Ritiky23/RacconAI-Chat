@@ -1,0 +1,731 @@
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+// SASS Root Variables
+$logo-font: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+$button-width: 90px;
+$blue: #3f00d3c1;
+$btn-bg: #8bc34a;
+$text-light: #827a7a;
+$background-color: #2c3e50d0;
+$sidebar-color: #34495ecd;
+$chat-bg: #ecf0f1c9;
+$primary-color: #34495e;
+$ownermsg:#577ff6;
+$secondary-color: #fefefe;
+$text-color: #ecebe9;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $logo-font;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  width: 120px; /* Increased size */
+  height: 120px; /* Increased size */
+  transform: scale(0);
+  pointer-events: none;
+  animation: ripple-animation 0.6s linear;
+}
+
+.ripple:active::after {
+  transform: scale(6);
+  opacity: 0;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(6);
+    opacity: 0;
+  }
+}
+
+.inputContainer {
+  position: relative; /* Allows absolute positioning of child elements */
+}
+
+.progressOverlay {
+  position: absolute; /* Absolute positioning relative to .inputContainer */
+  top: -100%;
+  left: 75%;
+  transform: translate(-50%, -50%); /* Centers the progress bar */
+  z-index: 1000; /* Ensures it appears above other content */
+}
+
+.spinnerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px; /* Increased size */
+}
+
+/* Circular spinner */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1); /* Light grey background */
+  border-top: 4px solid #3498db; /* Blue foreground */
+  border-radius: 50%;
+  width: 30px; /* Larger size for spinner */
+  height: 30px; /* Larger size for spinner */
+  animation: spin 0.8s linear infinite;
+}
+
+/* Animation for spinner */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fileMenu {
+  display: flex;
+  flex-direction: column;
+  background-color: $background-color;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px; /* Increased padding */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  font-size: larger;
+  margin-right: 20px;
+  margin-bottom: 15px; /* Increased margin */
+  z-index: 1000;
+}
+
+.messageTimestamp {
+  display: block; /* Ensure it appears on a new line */
+  font-size: 14px; /* Increased font size */
+  color: #b0b0b0; /* Light gray color */
+  margin-top: 10px; /* Increased space above the timestamp */
+  text-align: right; /* Align text to the right */
+}
+
+.message {
+  display: flex;
+  gap: 15px; /* Increased gap */
+  margin-bottom: 30px; /* Increased bottom margin */
+
+  &.owner {
+    flex-direction: row-reverse;
+
+    .messageContent {
+      align-items: flex-end;
+    }
+  }
+
+  .messageInfo {
+    display: flex;
+    flex-direction: column;
+    color: gray;
+    font-weight: 300;
+
+    img {
+      width: 50px; /* Increased image size */
+      height: 50px; /* Increased image size */
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  .messageContent {
+    max-width: 90%; /* Increased max-width */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap */
+    color: #34495e;
+
+    p {
+      word-wrap: break-word;
+      background-color: lighten($text-color, 30%);
+      padding: 15px 25px; /* Increased padding */
+      border-radius: 0 12px 12px 12px; /* Increased border-radius */
+      font-size: 16px; /* Increased font size */
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px; /* Increased border-radius */
+    }
+
+    video {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px; /* Increased border-radius */
+    }
+    a {
+      color: #122735;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.fileMenuItem {
+  display: flex;
+  align-items: center;
+  padding: 15px; /* Increased padding */
+  margin-bottom: 10px; /* Increased margin */
+  border-radius: 6px; /* Increased border-radius */
+  transition: background-color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+
+  &.last-child {
+    margin-bottom: 0;
+  }
+
+  .fa-icon {
+    margin-right: 15px; /* Increased margin */
+  }
+}
+
+.input {
+  display: flex;
+  align-items: center;
+
+  input[type="text"] {
+    flex-grow: 1;
+    padding: 15px; /* Increased padding */
+    border: 1px solid #ddd;
+    border-radius: 6px; /* Increased border-radius */
+    margin-right: 15px; /* Increased margin */
+    font-size: 18px; /* Increased font size */
+  }
+}
+
+.inputOptions {
+  display: flex;
+  align-items: center;
+}
+
+.fileInputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 15px; /* Increased margin */
+}
+
+.formContainer {
+  margin: 0;
+  padding: 0;
+  background-color: #33333300;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .formWrapper {
+    background-color: $background-color;
+    padding: 30px 80px; /* Increased padding */
+    border-radius: 12px; /* Increased border-radius */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Increased gap */
+    align-items: center;
+
+    @include mobile {
+      padding: 15px 50px; /* Adjusted padding for mobile */
+    }
+
+    .logo {
+      color: #eeeeee;
+      font-size: 30px; /* Increased font size */
+      font-weight: bold;
+
+      font-family: $logo-font;
+
+      @include mobile {
+        font-size: 22px; /* Adjusted font size for mobile */
+      }
+    }
+
+    .title {
+      color: #f0f0f0;
+      font-size: 20px; /* Increased font size */
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px; /* Increased gap */
+
+      input {
+        padding: 20px; /* Increased padding */
+        width: 300px; /* Increased width */
+        height: 20px; /* Increased height */
+        border: none;
+        font-size: larger;
+        border-bottom: 1px solid #a7bcff;
+
+        &::placeholder {
+          color: rgb(175, 175, 175);
+        }
+      }
+
+      button {
+        background-color: #849ceb;
+        color: #ffffff;
+        padding: 15px; /* Increased padding */
+        font-weight: bold;
+        border: none;
+        border-radius: 8px; /* Increased border-radius */
+        cursor: pointer;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Increased gap */
+        color: #8da4f1;
+        font-size: 16px; /* Increased font size */
+        cursor: pointer;
+
+        .avatarContainer {
+          width: 100px; /* Increased width */
+          height: 100px; /* Increased height */
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          object-fit: cover;
+        }
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .demoContainer {
+        text-align: center;
+
+        p {
+          font-family: $logo-font;
+        }
+      }
+
+      p {
+        color: #dadada;
+        font-size: 16px; /* Increased font size */
+        margin-top: 15px; /* Increased margin */
+      }
+    }
+  }
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  .container {
+    display: flex;
+    width: 85vw; /* Increased width */
+    height: 85vh; /* Increased height */
+    max-width: 1400px; /* Increased max-width */
+    max-height: 900px; /* Increased max-height */
+    background-color: $chat-bg; /* Ensure background color for visibility */
+    border-radius: 12px; /* Increased border-radius */
+    overflow: hidden;
+
+    .sidebar {
+      flex: 1;
+      background-color: $sidebar-color;
+      display: flex;
+      flex-direction: column;
+
+      @include mobile {
+        width: 120px; /* Increased width for mobile */
+      }
+
+      .vertical-line {
+        width: 2px;
+        height: 100%;
+        background-color: #827a7a; /* Color of the vertical line */
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $sidebar-color;
+        box-shadow: 0 6px 4px -3px rgba(0, 0, 0, 0.2); /* Increased shadow */
+        height: 70px; /* Increased height */
+        padding: 5px;
+        color: $text-color;
+        position: relative; /* Ensure relative positioning for pseudo-elements */
+      
+        .logo {
+          font-weight: bold;
+          font-family: $logo-font;
+          font-size: 20px; /* Increased font size */
+          margin-left: 5%;
+          color: white;
+      
+          @include mobile {
+            display: none;
+          }
+        }
+      
+        .user {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px; /* Increased gap */
+          position: relative; /* Relative positioning for pseudo-elements */
+      
+          &::before,
+          &::after {
+            content: "";
+            width: 1px; /* Width of the vertical line */
+            height: 75px; /* Height of the vertical line */
+            background-color:#827a7a; /* Color of the vertical line */
+            position: absolute;
+          }
+      
+          &::before {
+            left: -55px; /* Position line to the left of the profile image */
+          }
+      
+          &::after {
+            right: 70px; /* Position line to the right of the display name */
+          }
+      
+          img {
+            background-color: #ddddf7;
+            height: 40px; /* Increased size */
+            width: 40px; /* Increased size */
+            border-radius: 50%;
+            margin-left: 10%;
+            object-fit: cover;
+          }
+      
+          span {
+            margin-right: 10%;
+            font-size: 25px;
+          }
+      
+          button {
+            border: none;
+            cursor: pointer;
+            background: transparent;
+            margin-right: 40%;
+            margin-left: 5%;
+      
+            @include tablet {
+              position: absolute;
+              bottom: 15px; /* Increased bottom position */
+            }
+      
+            @include mobile {
+              right: 15px; /* Increased right position */
+            }
+      
+            img {
+              width: 30px; /* Increased size */
+              height: 30px; /* Increased size */
+            }
+          }
+        }
+      }
+      
+
+      .search {
+        border-bottom: 1px solid #ffffff; /* Add this to use flexbox layout */
+        align-items: center; /* Vertically center the items */
+        background-color: #344459;
+      
+        .searchForm {
+          display: flex; /* Use flexbox layout for the form */
+          align-items: center; /* Vertically center the items */
+          padding: 15px; /* Increased padding */
+          flex: 1;
+          width: 100%; /* Ensure the form takes full width */
+          
+          input {
+            background-color: transparent;
+            border: none;
+            color: $text-color;
+            outline: none;
+            width: 100%;
+            padding: 15px; /* Increased padding */
+      
+            &::placeholder {
+              color: #a6b8ba;
+            }
+          }
+      
+          .fa-icon {
+            margin-right: 15px; /* Increased margin */
+            color: #a6b8ba; /* Change icon color if needed */
+          }
+        }
+      }
+      
+      .chats {
+        margin-top: 3%;
+      }
+
+      .userChat {
+        display: flex;
+        align-items: center;
+        padding: 15px; /* Increased padding */
+        transition: transform 0.3s ease-in-out;
+        margin-bottom: 15px; /* Increased space between cards */
+        background-color: $primary-color; /* Card background color */
+        border-radius: 10px; /* Increased border-radius */
+        box-shadow: 0 4px 8px rgba(0.1, 0.2, 0.2, 0.3); /* Increased card elevation */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+          background-color: lighten($background-color, 10%);
+        }
+
+        img {
+          width: 60px; /* Increased size */
+          height: 60px; /* Increased size */
+          border-radius: 50%;
+          object-fit: cover;
+
+          @include mobile {
+            width: 40px; /* Adjusted size for mobile */
+            height: 40px; /* Adjusted size for mobile */
+          }
+        }
+
+        .userChatInfo {
+          width: 200px; /* Increased width */
+
+          span {
+            font-family: $logo-font;
+            font-size: 22px; /* Increased font size */
+            font-weight: 600;
+          }
+
+          p {
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 16px; /* Increased font size */
+            color: #658386;
+
+            @include mobile {
+              width: 50px; /* Adjusted width for mobile */
+            }
+          }
+        }
+      }
+    }
+
+    .chat {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+
+      .chatInfo {
+        height: 63px; /* Increased height */
+        background-color: $background-color;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 10px; /* Increased padding */
+        align-items: center;
+        color: $text-color;
+        font-family: $logo-font;
+
+        span {
+          margin-left: 5%;
+          font-size: 24px; /* Increased font size */
+          font-weight: 600;
+        }
+      }
+
+      .chatInfo img {
+        height: 45px; /* Increased height */
+        width: 45px; /* Increased width */
+        border-radius: 80%; /* Makes the image circular */
+      }
+      
+      .messages {
+        padding: 15px; /* Increased padding */
+        background-color: $chat-bg;
+        height: calc(100% - 150px); /* Increased height calculation */
+        overflow-y: auto;
+        scrollbar-width: none;
+
+        .message {
+          display: flex;
+          gap: 15px; /* Increased gap */
+          margin-bottom: 30px; /* Increased bottom margin */
+
+          .messageInfo {
+            display: flex;
+            flex-direction: column;
+            color: gray;
+            font-weight: 300;
+
+            img {
+              width: 50px; /* Increased size */
+              height: 50px; /* Increased size */
+              border-radius: 50%;
+              object-fit: cover;
+
+              @include mobile {
+                width: 40px; /* Adjusted size for mobile */
+                height: 40px; /* Adjusted size for mobile */
+              }
+            }
+          }
+
+          .messageContent {
+            max-width: 90%; /* Increased max-width */
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Increased gap */
+            color: #34495e;
+
+            p {
+              width: 200px; /* Increased width */
+              word-wrap: break-word;
+              background-color: lighten($primary-color, 30%);
+              padding: 15px 25px; /* Increased padding */
+              border-radius: 0 12px 12px 12px; /* Increased border-radius */
+              max-width: max-content;
+              font-size: larger;
+
+              @include mobile {
+                width: 100px; /* Adjusted width for mobile */
+                font-size: 16px; /* Increased font size for mobile */
+              }
+            }
+
+            img {
+              width: 50%;
+            }
+          }
+
+          &.owner {
+            flex-direction: row-reverse;
+
+            .messageContent {
+              align-items: flex-end;
+
+              p {
+                width: 200px; /* Increased width */
+                background-color: lighten($ownermsg, 10%);
+                color: rgb(24, 24, 24);
+                border-radius: 12px 0 12px 12px;
+
+                @include mobile {
+                  width: 100px; /* Adjusted width for mobile */
+                  font-size: 16px; /* Increased font size for mobile */
+                }
+              }
+            }
+          }
+        }
+
+        .welcome-message {
+          margin-top: 40px; /* Increased top margin */
+          text-align: center;
+          background-color: #12273500;
+
+          img {
+            height: 200px; /* Increased height */
+          }
+
+          .lock {
+            justify-content: center;
+            padding-left: 25%; /* Increased padding-left */
+
+            p {
+              font-weight: 600;
+              font-family: $logo-font;
+            }
+          }
+        }
+      }
+
+      .input {
+        height: 50px; /* Increased height */
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        border-radius: 8px; /* Increased border-radius */
+        justify-content: space-between;
+        padding: 15px; /* Increased padding */
+
+        input {
+          width: 85%; /* Increased width */
+          border: none;
+          outline: none;
+          font-size: 20px; /* Increased font size */
+          font-family: $logo-font;
+
+          &::placeholder {
+            color: #a6a6a6;
+          }
+        }
+
+        button {
+          width: 50px; /* Increased width */
+          height: 50px; /* Increased height */
+          border: none;
+          border-radius: 8px; /* Increased border-radius */
+          background-color: $background-color;
+          color: $chat-bg;
+          font-weight: bold;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: 60%;
+            height: 60%;
+          }
+        }
+      }
+    }
+  }
+}
