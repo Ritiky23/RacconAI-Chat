@@ -413,7 +413,7 @@ body {
           .userInfo {
             display: flex;
             align-items: center;
-            height: 70px;
+            height: 40px;
             gap: 10px; /* Gap between image and name */
             border-left: 2px solid #a6a6a6; /* Left border */
             border-right: 2px solid #a6a6a6; /* Right border */
@@ -584,7 +584,7 @@ body {
       }
       
       .messages {
-        padding: 15px; /* Increased padding */
+        padding: 10px; /* Increased padding */
         background-color: $chat-bg;
         height: calc(100% - 150px); /* Increased height calculation */
         overflow-y: auto;
@@ -592,8 +592,8 @@ body {
 
         .message {
           display: flex;
-          gap: 15px; /* Increased gap */
-          margin-bottom: 30px; /* Increased bottom margin */
+          gap: 10px; /* Increased gap */
+          margin-bottom: 20px; /* Increased bottom margin */
 
           .messageInfo {
             display: flex;
@@ -602,8 +602,8 @@ body {
             font-weight: 300;
 
             img {
-              width: 50px; /* Increased size */
-              height: 50px; /* Increased size */
+              width: 30px; /* Increased size */
+              height: 30px; /* Increased size */
               border-radius: 50%;
               object-fit: cover;
 
@@ -625,10 +625,10 @@ body {
               width: 200px; /* Increased width */
               word-wrap: break-word;
               background-color: lighten($primary-color, 30%);
-              padding: 15px 25px; /* Increased padding */
+              padding: 8px 8px; /* Increased padding */
               border-radius: 0 12px 12px 12px; /* Increased border-radius */
               max-width: max-content;
-              font-size: larger;
+              font-size: 12;
 
               @include mobile {
                 width: 100px; /* Adjusted width for mobile */
@@ -696,17 +696,20 @@ body {
       }
 
       .input {
+ 
         height: 15px; /* Increased height */
         background-color: #ffffff;
         display: flex;
         align-items: center;
         border-radius: 8px; /* Increased border-radius */
         justify-content: space-between;
-        padding: 15px; /* Increased padding */
+        padding: 25px; /* Increased padding */
 
         input {
           width: 85%; /* Increased width */
           border: none;
+          height: 15px;
+          
           outline: none;
           font-size: 20px; /* Increased font size */
           font-family: $logo-font;

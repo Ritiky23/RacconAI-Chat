@@ -17,7 +17,7 @@ const Chat = () => {
             <img
               src={photoURL}
               alt="User avatar"
-              style={{ height: 60, width: 60,marginLeft:20, borderRadius: '50%', objectFit: 'cover' }}
+              style={{ height: 40, width: 40,marginLeft:20, borderRadius: '50%', objectFit: 'cover' }}
             />
           )}
         </div>
