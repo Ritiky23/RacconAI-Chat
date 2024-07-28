@@ -27,7 +27,7 @@ Raccon Chat is an intuitive and user-friendly web application designed for seaml
 ## Screenshots
 
 <p align="center">
-  <img src="ss/s2.png" alt="Chat Screenshot 1"/>
+  <img src="ss/s6.png" alt="Chat Screenshot 1"/>
 </p>
 <p align="center">
   <img src="ss/s3.png" alt="Chat Screenshot 2"/>
