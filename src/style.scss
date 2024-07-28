@@ -392,7 +392,7 @@ body {
         padding: 5px;
         color: $text-color;
         position: relative; /* Ensure relative positioning for pseudo-elements */
-      
+        
         .logo {
           font-weight: bold;
           font-family: $logo-font;
@@ -410,45 +410,38 @@ body {
           align-items: center;
           justify-content: center;
           gap: 15px; /* Increased gap */
-          position: relative; /* Relative positioning for pseudo-elements */
+          
+          .userInfo {
+            display: flex;
+            align-items: center;
+            height: 70px;
+            gap: 10px; /* Gap between image and name */
+            border-left: 2px solid #a6a6a6; /* Left border */
+            border-right: 2px solid #a6a6a6; /* Right border */
+            
+            padding: 0 10px; /* Padding inside the borders */
+            
+            img {
+              background-color: #ddddf7;
+              height: 40px; /* Increased size */
+              width: 40px; /* Increased size */
+              border-radius: 50%;
+              object-fit: cover;
+            }
       
-          &::before,
-          &::after {
-            content: "";
-            width: 1px; /* Width of the vertical line */
-            height: 75px; /* Height of the vertical line */
-            background-color:#827a7a; /* Color of the vertical line */
-            position: absolute;
+            span {
+              font-size: 20px;
+            }
           }
-      
-          &::before {
-            left: -40px; /* Position line to the left of the profile image */
-          }
-      
-          &::after {
-            right: 100px; /* Position line to the right of the display name */
-          }
-      
-          img {
-            background-color: #ddddf7;
-            height: 40px; /* Increased size */
-            width: 40px; /* Increased size */
-            border-radius: 50%;
-            margin-left: 10%;
-            object-fit: cover;
-          }
-      
-          span {
-            margin-right: 5%;
-            font-size: 20px;
-          }
-      
+          
           button {
-            border: none;
             cursor: pointer;
+            border-radius: 20px;
+            width: 50px;
+            height: 50px;
+            border-color: rgba(0, 0, 0, 0.344);
             background: transparent;
-            margin-right: 40%;
-            margin-left: 5%;
+    
       
             @include tablet {
               position: absolute;
@@ -484,6 +477,7 @@ body {
             background-color: transparent;
             border: none;
             color: $text-color;
+            font-size: large;
             outline: none;
             width: 100%;
             padding: 15px; /* Increased padding */
@@ -534,11 +528,12 @@ body {
 
         .userChatInfo {
           width: 200px; /* Increased width */
-
+          margin-left: 5%;
           span {
             font-family: $logo-font;
             font-size: 22px; /* Increased font size */
             font-weight: 600;
+            
           }
 
           p {
@@ -548,6 +543,7 @@ body {
             text-overflow: ellipsis;
             font-size: 16px; /* Increased font size */
             color: #658386;
+            margin-top: 2%;
 
             @include mobile {
               width: 50px; /* Adjusted width for mobile */
